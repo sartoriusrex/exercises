@@ -1,0 +1,33 @@
+.time-series-form{
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	margin-bottom: 1rem;
+}
+
+.filtered {
+	text-decoration: line-through;
+}
+
+.selectedTag {
+	background-color: black;
+	color: white;
+}
+
+.button-message-container,
+.tag-container,
+.filter-container,
+.date-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.button-message-container,
+.filter-container {
+	width: 20%;
+}
+
+.date-container {
+	width: 30%;
+}

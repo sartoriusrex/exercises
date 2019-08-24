@@ -1,3 +1,7 @@
+.App {
+  margin: .25rem;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -13,25 +17,68 @@ ul {
 li {
   list-style: none;
   font-size: 1rem;
-  padding: .5rem;
+  padding: .25rem .5rem;
+  border: 1px solid white;
 }
 
 li:hover {
   cursor: pointer;
+  border: 1px solid black;
 }
 
-h1, h2 {
+h1, h3 {
   margin: .5rem 0;
   display: flex;
   justify-content: center;
+  text-align: center;
 }
 
 label {
-  font-size: 1.5rem;
+  font-size: 1rem;
   display: flex;
   justify-content: center;
 }
 
 input {
-  
+  width: 90%;
+  margin: .5rem 0;
+  color: blue;
+  border: 1px solid blue;
+  padding-inline-start: .5rem;
+  font-size: 1.5rem;
+}
+
+input:hover {
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+input::placeholder {
+  padding-inline-start: .5rem;
+  font-size: 1rem;
+}
+
+button {
+  background-color: black;
+  border: 2px solid black;
+  color: white;
+  font-size: 1rem;
+  padding: 1rem;
+  margin: .1rem .1rem .5rem;
+}
+
+button:hover {
+  cursor: pointer;
+  background: white;
+  color: black;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}
+
+.loading {
+  color: blue;
+  text-align: center;
 }
