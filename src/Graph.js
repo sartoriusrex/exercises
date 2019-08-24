@@ -6,15 +6,13 @@ const Graph = ({
 	timeSeriesData,
 	tags,
 	tagId,
-	startTS,
-	endTS,
 }) => {
-		var data = [];
-		var dataSeries = { 
+		var data = []; //array to actually render data
+		var dataSeries = {  //config object for the graph
 			type: "line",
-			xValueFormatString: "MMM D, hh:mm tt"
+			xValueFormatString: "MMM D, hh:mm tt" //i.e. Aug 04, 02:33 pm
 		};
-		var dataPoints = [];
+		var dataPoints = []; //will also be part of the configobject for the graph
 
 		// Update Graph title based on selected Tag 
 		// If no tag is selected, tag is Null
@@ -22,7 +20,8 @@ const Graph = ({
 		let displayedTag = tagId && tags.filter( tag => tag.tagId === tagId )[0].label;
 
 
-		// 
+		// Tags 2 and 3 have boolean data, and thus need to display different Y axis
+		//In each map function (boolean or not), we map through each data point and  push into our (empty) dataPoints array an object with x and y keys that correspond to the data we get from our time series: a value at a date-time
 		if( tagId && ( tagId === "Tag2" || tagId === "Tag3")){
 			timeSeriesData.map( data => {
 				let y = ( data.value === true || data.value === "On" ) ? 1 : 0 ;
@@ -62,6 +61,7 @@ const Graph = ({
 			yAxisTitle = "Voltage"
 		}
 
+		//We populate the dataSeries with all of our datapoints and push the data into the data array, for use in rendering
 		dataSeries.dataPoints = dataPoints;
 		data.push(dataSeries);
 		
@@ -70,16 +70,16 @@ const Graph = ({
 			zoomEnabled: true,
 			animationEnabled: true,
 			title: {
-				text: displayedTag
+				text: displayedTag //dynamic, based on tagId
 			},
 			axisY: {
-				title: yAxisTitle,
+				title: yAxisTitle, //dynamic, also based on tagId
 				includeZero: false
 			},
 			axisX: {
-				title: "Date"
+				title: "Date" //Y may change, but X is always the same date range
 			},
-			data: data
+			data: data //the same data array we pushed all of our datapoints into earlier.
 		}
 
 	return(

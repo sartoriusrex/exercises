@@ -1,0 +1,10 @@
+
+.error {
+  color: red;
+  text-align: center;
+}
+
+.loading {
+  color: blue;
+  text-align: center;
+}
