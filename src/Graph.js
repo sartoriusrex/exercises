@@ -88,7 +88,7 @@ const Graph = ({
 				options={ options }
 			/>
 		</div>
-	)
+	);
 }
 
 export default Graph;

@@ -28,8 +28,9 @@ const Form = ({
 			setTags( res.data );
 		}).catch( err => {
 			console.log( err.message );
+			setError("Sorry, we couldn't find any tags");
 		});
-	}, [ setTags ] )
+	}, [ setTags ] );
 
 
 	// Make a new array to push tag features into
@@ -67,7 +68,6 @@ const Form = ({
 		)
 		return null;
 	})
-
 
 	// ClassName variables based on state. They are styled from the corresponding css file
 	const filtered = "filtered";
@@ -110,6 +110,7 @@ const Form = ({
 					{ displayedTags.map( tag => 
 						<li 
 							key={ tag.label }
+							data-testid="tag"
 							onClick={ () => setTagId( tag.tagId )}
 							className={ tag.tagId === tagId ? selectedTag : unselectedTag } //Clicking on the tag updates the tagId state. If the tagId in state matches the current tagId, style it as if it were selected, otherwise don't
 						>{ tag.label }</li>
@@ -124,6 +125,7 @@ const Form = ({
 						<li
 							onClick={ () => filterTag( feature ) }
 							key={ feature }
+							data-testid={"feature-" + feature }
 							className={ filteredFeatures.indexOf(feature) !== -1 ? filtered : notFiltered } //Is the feature present in the filteredFeatures array? if it is, style it like it's filtered out (line-through), otherwise it's normal
 						>
 							{ feature }
